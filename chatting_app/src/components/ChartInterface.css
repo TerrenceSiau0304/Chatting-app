@@ -1,0 +1,19 @@
+.header {
+    border-Bottom: 1px solid #ccc;
+    padding: "8px";
+}
+
+.messageContainer {
+    flex: 1;
+    padding: 8px;
+    overflow-y: auto;
+}
+
+.textBox {
+    border-Top: 1px solid #ccc;
+    padding: 8px;
+}
+
+input {
+    width: 80%;
+}
