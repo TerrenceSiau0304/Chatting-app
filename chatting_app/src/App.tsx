@@ -5,12 +5,16 @@ import SideBar from "./components/SideBar";
 import ChartInterface from "./components/ChartInterface";
 import { fetchUsers } from "./api/Users";
 import { fetchGroups } from "./api/Groups";
+import { fetchChats } from "./api/Chats";
 import "./App.css";
 import { useEffect, useState } from "react";
 
 function App() {
   const [users, setUsers] = useState([]);
   const [groups, setGroups] = useState([]);
+  const [chatHeader, setChartHeader] = useState("");
+  const [selectedUser, setSelectedUser] = useState<number | null>(null);
+  const [chats, setChat] = useState([]);
 
   useEffect(() => {
     fetchUsers()
@@ -24,12 +28,24 @@ function App() {
       .catch((err) => console.error(err));
   }, []);
 
+  useEffect(() => {
+    if (selectedUser) {
+      fetchChats(selectedUser)
+        .then(setChat)
+        .catch((err) => console.error(err));
+    }
+  }, [selectedUser]);
+
   const handleSelectItem = (item: string) => {
-    console.log(item);
+    setChartHeader(item);
+  };
+
+  const handleSelectUser = (user: number) => {
+    setSelectedUser(user);
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
+    <div className="chat-page">
       {/* Sidebar */}
       <SideBar />
 
@@ -40,6 +56,7 @@ function App() {
           items={users}
           heading="Users"
           onSelectItem={handleSelectItem}
+          onSelectUser={handleSelectUser}
         ></ListUser>
 
         {/* Groups */}
@@ -51,7 +68,11 @@ function App() {
       </div>
 
       {/* Chat Interface */}
-      <ChartInterface></ChartInterface>
+      <ChartInterface
+        items={chats}
+        heading={chatHeader}
+        selectedUser={selectedUser}
+      ></ChartInterface>
     </div>
   );
 }

@@ -17,9 +17,10 @@ interface Props {
   items: ListItem[];
   heading: string;
   onSelectItem: (item: string) => void;
+  onSelectUser: (user: number) => void;
 }
 
-function ListUser({ items, heading, onSelectItem }: Props) {
+function ListUser({ items, heading, onSelectItem, onSelectUser }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
@@ -38,6 +39,7 @@ function ListUser({ items, heading, onSelectItem }: Props) {
             onClick={() => {
               setSelectedIndex(index);
               onSelectItem(item.username);
+              onSelectUser(item.id);
             }}
           >
             <div className="user">

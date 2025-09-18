@@ -1,3 +1,8 @@
+.chat-page {
+    display: flex; 
+    height: 100vh;
+}
+
 .contact {
     width: 200px;
     display: flex;

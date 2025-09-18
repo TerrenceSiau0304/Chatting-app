@@ -7,13 +7,56 @@
     flex: 1;
     padding: 8px;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.messageBubble {
+  max-width: 100%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.fromMe {
+  background: #daf8cb;
+  align-self: flex-end;
+}
+
+.fromOther {
+  background: #fff;
+  border: 1px solid #ddd;
+  align-self: flex-start;
+}
+
+.messageImage {
+  max-width: 200px;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.messageTime {
+  font-size: 0.7em;
+  color: #888;
+  margin-top: 4px;
+  text-align: right;
 }
 
 .textBox {
-    border-Top: 1px solid #ccc;
-    padding: 8px;
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.textBox input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
 input {
     width: 92%;
 }
+
