@@ -1,12 +1,17 @@
 import { useState } from "react";
+import "./ListUser.css";
 
-interface Group {
+interface User {
   id: number;
-  name: string;
-  users: ListItem[];
+  username: string;
+  position: string;
+  address: string;
+  phone: string;
+  email: string;
+  profileImage: string;
 }
 
-type ListItem = Group;
+type ListItem = User;
 
 interface Props {
   items: ListItem[];
@@ -14,7 +19,7 @@ interface Props {
   onSelectItem: (item: string) => void;
 }
 
-function ListGroup({ items, heading, onSelectItem }: Props) {
+function ListUser({ items, heading, onSelectItem }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
@@ -32,10 +37,13 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
             key={item.id}
             onClick={() => {
               setSelectedIndex(index);
-              onSelectItem(item.name);
+              onSelectItem(item.username);
             }}
           >
-            {item.name}
+            <div className="user">
+              <img src={item.profileImage} alt={item.username}></img>
+              {item.username}
+            </div>
           </li>
         ))}
       </ul>
@@ -43,4 +51,4 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
   );
 }
 
-export default ListGroup;
+export default ListUser;

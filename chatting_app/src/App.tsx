@@ -1,11 +1,29 @@
 import Alert from "./components/Alert";
 import ListGroup from "./components/ListGroup";
+import ListUser from "./components/ListUser";
 import SideBar from "./components/SideBar";
 import ChartInterface from "./components/ChartInterface";
+import { fetchUsers } from "./api/Users";
+import { fetchGroups } from "./api/Groups";
 import "./App.css";
+import { useEffect, useState } from "react";
 
 function App() {
-  let items = ["New York", "Texas", "Mlys", "Tokyo", "Paris"];
+  const [users, setUsers] = useState([]);
+  const [groups, setGroups] = useState([]);
+
+  useEffect(() => {
+    fetchUsers()
+      .then(setUsers)
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    fetchGroups()
+      .then(setGroups)
+      .catch((err) => console.error(err));
+  }, []);
+
   const handleSelectItem = (item: string) => {
     console.log(item);
   };
@@ -18,15 +36,15 @@ function App() {
       {/* Middle column */}
       <div className="contact">
         {/* Users */}
-        <ListGroup
-          items={items}
-          heading="Friends"
+        <ListUser
+          items={users}
+          heading="Users"
           onSelectItem={handleSelectItem}
-        ></ListGroup>
+        ></ListUser>
 
         {/* Groups */}
         <ListGroup
-          items={items}
+          items={groups}
           heading="Groups"
           onSelectItem={handleSelectItem}
         ></ListGroup>

@@ -1,7 +1,7 @@
 import "./SideBar.css";
 
 const SideBar = () => {
-  return <div className="style">SideBar</div>;
+  return <div className="sidebar">SideBar</div>;
 };
 
 export default SideBar;
