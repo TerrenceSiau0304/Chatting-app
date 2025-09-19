@@ -1,3 +1,12 @@
+export interface Chat {
+  id: number;
+  fromUser: number;
+  toUser: number;
+  message: string;
+  image?: null | string;
+  timestamp: number;
+}
+
 export async function fetchChats(selectedUser: number) {
     const res = await fetch(`https://mock-test.worthycodes.com/api/chatSystem/chatByUserId/${selectedUser}`);
     if (!res.ok) throw new Error("Failed to fetch chats");

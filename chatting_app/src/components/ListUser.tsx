@@ -1,15 +1,6 @@
 import { useState } from "react";
+import { User } from "../api/Users";
 import "./ListUser.css";
-
-interface User {
-  id: number;
-  username: string;
-  position: string;
-  address: string;
-  phone: string;
-  email: string;
-  profileImage: string;
-}
 
 type ListItem = User;
 

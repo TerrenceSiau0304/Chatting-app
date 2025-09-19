@@ -1,15 +1,6 @@
 import "./ChartInterface.css";
 import { useState } from "react";
-import { sendChats } from "../api/Chats";
-
-interface Chat {
-  id: number;
-  fromUser: number;
-  toUser: number;
-  message: string;
-  image?: null | string;
-  timestamp: number;
-}
+import { sendChats, Chat } from "../api/Chats";
 
 type ListItem = Chat;
 
