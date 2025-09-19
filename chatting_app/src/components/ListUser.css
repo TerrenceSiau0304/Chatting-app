@@ -1,3 +1,6 @@
+.scrollable {
+    overflow-y: auto;
+}
 
 img {
     width: 30px;

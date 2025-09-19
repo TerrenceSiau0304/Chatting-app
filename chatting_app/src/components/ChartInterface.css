@@ -1,6 +1,9 @@
 .header {
     border-Bottom: 1px solid #ccc;
-    padding: "8px";
+    padding: "30px";
+    background-color: #ccc;
+    font-size: large;
+    font-weight: 600;
 }
 
 .messageContainer {
@@ -47,6 +50,7 @@
   display: flex;
   padding: 10px;
   border-top: 1px solid #ddd;
+  gap: 10px;
 }
 
 .textBox input {
@@ -57,6 +61,6 @@
 }
 
 input {
-    width: 92%;
+    width: 90%;
 }
 

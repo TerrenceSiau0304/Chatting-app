@@ -27,7 +27,7 @@ function ListUser({ items, heading, onSelectItem, onSelectUser }: Props) {
     <>
       <h1>{heading}</h1>
       {items.length === 0 && <p>No item found</p>}
-      <ul className="list-group">
+      <ul className="list-group scrollable">
         {items.map((item, index) => (
           <li
             className={

@@ -1,4 +1,6 @@
 import "./ChartInterface.css";
+import { useState } from "react";
+import { sendChats } from "../api/Chats";
 
 interface Chat {
   id: number;
@@ -20,6 +22,20 @@ interface Props {
 const currentUser = 5;
 
 const ChartInterface = ({ items, heading, selectedUser }: Props) => {
+  const [message, setMessage] = useState("");
+
+  const handleSend = async () => {
+    if (!message.trim() || !selectedUser) return;
+
+    try {
+      const newMessage = await sendChats(currentUser, selectedUser, message);
+      setMessage("");
+    } catch (err) {
+      console.error("Failed to send chat", err);
+      setMessage("");
+    }
+  };
+
   return (
     <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
       <div className="header">{heading}</div>
@@ -52,8 +68,13 @@ const ChartInterface = ({ items, heading, selectedUser }: Props) => {
           ))}
       </div>
       <div className="textBox">
-        <input type="text" placeholder="Type a message..." />
-        <button>Send</button>
+        <input
+          type="text"
+          placeholder="Type a message..."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button onClick={handleSend}>Send</button>
       </div>
     </div>
   );
