@@ -26,6 +26,7 @@ function ListUser({ items, heading, onSelectItem, onSelectUser }: Props) {
   return (
     <>
       <h1>{heading}</h1>
+      <input className="search-box" type="text" placeholder="Search"></input>
       {items.length === 0 && <p>No item found</p>}
       <ul className="list-group scrollable">
         {items.map((item, index) => (

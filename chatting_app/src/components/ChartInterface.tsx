@@ -17,11 +17,17 @@ interface Props {
   items: ListItem[];
   heading: string;
   selectedUser: number | null;
+  onSelectInfo: (item: number) => void;
 }
 
 const currentUser = 5;
 
-const ChartInterface = ({ items, heading, selectedUser }: Props) => {
+const ChartInterface = ({
+  items,
+  heading,
+  selectedUser,
+  onSelectInfo,
+}: Props) => {
   const [message, setMessage] = useState("");
 
   const handleSend = async () => {
@@ -37,8 +43,17 @@ const ChartInterface = ({ items, heading, selectedUser }: Props) => {
   };
 
   return (
-    <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-      <div className="header">{heading}</div>
+    <div className="chat-interface">
+      <div
+        className="header"
+        onClick={() => {
+          if (selectedUser !== null) {
+            onSelectInfo(selectedUser);
+          }
+        }}
+      >
+        {heading}
+      </div>
       <div className="messageContainer">
         {items
           .filter(

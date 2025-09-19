@@ -6,6 +6,12 @@
     font-weight: 600;
 }
 
+.chat-interface {
+  flex: 1;
+  display: flex;
+   flex-Direction: column;
+}
+
 .messageContainer {
     flex: 1;
     padding: 8px;
@@ -51,6 +57,7 @@
   padding: 10px;
   border-top: 1px solid #ddd;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .textBox input {
@@ -58,6 +65,7 @@
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 6px;
+  
 }
 
 input {
