@@ -3,4 +3,11 @@
     height: 100vh;
     background: #222; 
     color: white;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
+

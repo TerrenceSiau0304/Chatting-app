@@ -1,4 +1,5 @@
 import { User } from "../api/Users";
+import "./Profile.css";
 
 interface ProfileProps {
   user: User;
