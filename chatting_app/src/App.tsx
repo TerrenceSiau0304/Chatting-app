@@ -17,6 +17,7 @@ function App() {
   const [selectedProfile, setSelectedProfile] = useState<User | null>(null);
   const [profileIndex, setProfileIdx] = useState<number | null>(null);
   const [chats, setChat] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const profileRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -89,6 +90,8 @@ function App() {
           heading="Users"
           onSelectItem={handleSelectItem}
           onSelectUser={handleSelectUser}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
         ></ListUser>
 
         {/* Groups */}
@@ -107,6 +110,7 @@ function App() {
             heading={chatHeader}
             selectedUser={selectedUser}
             onSelectInfo={handleSelectProfile}
+            searchTerm={searchTerm}
           />
         </div>
 

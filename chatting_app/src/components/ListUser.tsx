@@ -9,15 +9,30 @@ interface Props {
   heading: string;
   onSelectItem: (item: string) => void;
   onSelectUser: (user: number) => void;
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function ListUser({ items, heading, onSelectItem, onSelectUser }: Props) {
+function ListUser({
+  items,
+  heading,
+  onSelectItem,
+  onSelectUser,
+  searchTerm,
+  setSearchTerm,
+}: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <>
       <h1>{heading}</h1>
-      <input className="search-box" type="text" placeholder="Search"></input>
+      <input
+        className="search-box"
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      ></input>
       {items.length === 0 && <p>No item found</p>}
       <ul className="list-group scrollable">
         {items.map((item, index) => (
